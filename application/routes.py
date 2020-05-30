@@ -9,6 +9,7 @@ from flask import (
     flash,
     url_for,
 )
+import requests
 
 
 @app.route("/", methods=["GET"])
@@ -16,3 +17,10 @@ from flask import (
 @app.route("/home", methods=["GET"])
 def index():
     return render_template("index.html")
+
+
+@app.route("/count")
+def count():
+    res = requests.get("http://localhost:8080")
+    obj = json.loads(res.text)
+    return render_template("count.html", count=obj["count"])
