@@ -16,6 +16,7 @@ import requests
 @app.route("/index", methods=["GET"])
 @app.route("/home", methods=["GET"])
 def index():
+    print("wow!")
     return render_template("index.html")
 
 
